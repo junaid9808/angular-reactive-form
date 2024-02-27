@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -11,10 +16,14 @@ import { NgForm } from '@angular/forms';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  buildForm = inject(FormBuilder);
-  user: FormGroup = this.buildForm.group({
-    selectedCountry: [''],
-    city: [''],
+  // buildForm = inject(FormBuilder);
+  // user: FormGroup = this.buildForm.group({
+  //   selectedCountry: [''],
+  //   city: [''],
+  // });
+  user = new FormGroup({
+    selectedCountry: new FormControl(''),
+    city: new FormControl(''),
   });
   onSubmit() {
     var formValue = this.user.value;
